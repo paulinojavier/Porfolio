@@ -1,0 +1,209 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.nav{
+    background: linear-gradient(135deg, orange 60%, yellow);
+    height: 80px;
+    color: #000;
+}
+
+.nav__container{
+    display: flex;
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav__logo{
+    font-size: 1.5em;
+    font-weight: 900;
+}
+
+.nav__menu{
+    display: grid;
+    grid-auto-flow: column;
+    gap: 3em;
+}
+
+.nav__item{
+    color:#000;
+    text-decoration: none;
+    --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+
+.nav__item:after{
+    content: "";
+    display: block;
+    background: #000;
+    width: 90%;
+    margin-top: 3px;
+    height: 3px;
+    clip-path:var(--clippy);
+    transition: clip-path .3s;
+}
+.nav__item:hover{
+    --clippy: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+}
+.nav__label, .nav__input{
+    display: none;
+}
+
+.avatar{
+    width: 100%;
+    height: 100vh;
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.avatar__picture{
+    margin-bottom: 1em;
+}
+.avatar__img{
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+.avatar__texts{
+    flex-basis:40%;
+}
+
+span{
+    font-size: 50px;
+    font-family: 'Fredoka One', cursive;
+    animation: saltar 2s;
+    animation-timing-function: ease-in;
+    display: inline-block;
+    transform: translatey(0);
+  }
+  span:nth-child(1){
+    animation-delay: 0;
+  }
+  span:nth-child(2){
+    animation-delay: 0.2s;
+  }
+  span:nth-child(3){
+    animation-delay: 0.4s;
+  }
+  span:nth-child(4){
+    animation-delay: 0.6s;
+  }
+  @keyframes saltar{
+    0%{
+      transform: translatey(0);
+    }
+    10%{
+      transform: translatey(-10px);
+    }
+    50%{
+      transform: translatey(100px);
+    }
+    80%{
+      transform: translatey(110px);
+    }
+  }
+
+.avatar__paragraph{
+    line-height: 1.5;
+    font-weight: 300;
+    padding: .7em 0;
+}
+.avatar__button{
+    display: inline-block;
+    color: #fff;
+    background-color: red;
+    padding: 20px 30px;
+    font-size: 18px;
+}
+.title-projecs{
+    text-align: center;
+}
+.projecs__items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../assets/gameboy.png');
+    border-radius: 4px;
+    transition: transform 0.3s ease-in-out;
+    border: solid 1px rgb(217, 210, 210);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.projecs__items:hover{
+    filter: opacity(0.9);
+    transform: scale(1.04);
+}
+
+.projecs{
+    display: grid;
+    grid-template-columns:repeat(auto-fill, minmax(400px, 1fr));
+    grid-auto-rows: minmax(400px, auto);
+    gap: 10px;
+    padding:10px
+}
+
+.projecs__button{
+    background-color: yellow;
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-top: 300px;
+    font-size: 20px;
+    width: 40%;
+    height: 40px;
+}
+
+@media(max-width: 700px){
+    .nav__label{
+        display: block;
+        cursor: pointer;
+    }
+    .nav__menu{
+        position: fixed;
+        top:80px;
+        bottom: 0;
+        background: rgb(217, 210, 210);
+        width: 100%;
+        left: 0;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        font-size: 20px;
+        clip-path: circle(0 at center);
+        transition: clip-path 1s ease-in-out;
+    }
+  
+    .nav__input:checked + .nav__menu{
+        clip-path: circle(100% at center);
+    }
+}
+
+@media screen and (min-width:850px){
+    .avatar{
+        flex-direction: row;
+        align-items: center;
+    }
+    .avatar__picture{
+        flex-grow: 1;
+        order: 1;
+    }
+
+    .avatar__img{
+       max-width: none;
+    }
+}
